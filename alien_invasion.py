@@ -24,7 +24,7 @@ class AlienInvasion:
         while True:
             #监视键盘和鼠标事件
             for event in pygame.event.get():
-                if event==pygame.QUIT:
+                if event.type==pygame.QUIT:
                     pygame.quit()
                     sys.exit()
             
