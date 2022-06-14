@@ -25,6 +25,7 @@ class AlienInvasion:
             #监视键盘和鼠标事件
             for event in pygame.event.get():
                 if event==pygame.QUIT:
+                    pygame.quit()
                     sys.exit()
             
             #每次循环都重绘屏幕、船
