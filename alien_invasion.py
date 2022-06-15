@@ -41,9 +41,7 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type==pygame.KEYUP:
                 self._check_keyup_events(event)
-            elif event.type==pygame.K_q:
-                sys.exit()
-                #这样也能关掉，只是在idle里可能出问题
+
 
     def _check_keydown_events(self,event):
         #注意前一个函数判断条件是type，这里是key
@@ -57,6 +55,9 @@ class AlienInvasion:
             self.ship.moving_right=False
         elif event.key==pygame.K_LEFT:
             self.ship.moving_left=False
+        elif event.key==pygame.K_q:
+            sys.exit()
+        #用这个也能退出，只是idle可能出问题
 
     def _upadate_screen(self):
         """更新屏幕上的图像并切换到新屏幕"""
