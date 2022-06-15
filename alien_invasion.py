@@ -17,7 +17,7 @@ class AlienInvasion:
             (self.settings.screen_width,self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
-        self.ship=Ship(self)
+        self.ship=Ship(self)##重要，勿忘引用self(AlienInvasion实例)
     
     def run_game(self):
         """开始游戏的主循环"""

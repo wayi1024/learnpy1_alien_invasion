@@ -5,6 +5,9 @@ class Ship:
 
     def __init__(self,ai_game):
         """初始化飞船并设置其初始位置"""
+        #给Ship 类添加属性settings ，以便能够在update() 中使用它
+        self.setting=ai_game.settings
+
         #让Ship能访问当前AlienInvasion 实例的screen，
         # 并获取screen的外接矩形
         self.screen=ai_game.screen
@@ -27,9 +30,9 @@ class Ship:
     def update(self):
         """根据移动标志调整飞船的位置"""
         if self.moving_right:
-            self.rect.x+=1
+            self.rect.x+=self.setting.ship_speed
         if self.moving_left:
-            self.rect.x-=1
+            self.rect.x-=self.setting.ship_speed
 
     def blitme(self):
         """在指定位置绘制飞船"""
