@@ -13,11 +13,16 @@ class AlienInvasion:
         self.settings=Settings()
 
         #初始化屏幕大小和标题
-        self.screen=pygame.display.set_mode(
-            (self.settings.screen_width,self.settings.screen_height))
+        #self.screen=pygame.display.set_mode(
+        #    (self.settings.screen_width,self.settings.screen_height))
+        #设置全屏
+        self.screen=pygame.display.set_mode((0,0),pygame.FULLSCREEN)
+        self.settings.screen_width=self.screen.get_rect().width
+        self.settings.screen_height=self.screen.get_rect().height
         pygame.display.set_caption("Alien Invasion")
 
-        self.ship=Ship(self)##重要，勿忘引用self(AlienInvasion实例)
+        self.ship=Ship(self)
+        ##重要，勿忘引用self(AlienInvasion实例)
     
     def run_game(self):
         """开始游戏的主循环"""
@@ -33,9 +38,12 @@ class AlienInvasion:
                 pygame.quit()
                 sys.exit()
             elif event.type==pygame.KEYDOWN:
-                self._check_kedown_events(event)
+                self._check_keydown_events(event)
             elif event.type==pygame.KEYUP:
                 self._check_keyup_events(event)
+            elif event.type==pygame.K_q:
+                sys.exit()
+                #这样也能关掉，只是在idle里可能出问题
 
     def _check_keydown_events(self,event):
         #注意前一个函数判断条件是type，这里是key
