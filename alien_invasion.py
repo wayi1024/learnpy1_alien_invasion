@@ -36,9 +36,13 @@ class AlienInvasion:
                 #注意一个是type，一个是key
                 if event.key==pygame.K_RIGHT:
                     self.ship.moving_right=True
+                elif event.key==pygame.K_LEFT:
+                    self.ship.moving_left=True
             elif event.type==pygame.KEYUP:
                 if event.key==pygame.K_RIGHT:
                     self.ship.moving_right=False
+                elif event.key==pygame.K_LEFT:
+                    self.ship.moving_left=False
 
     def _upadate_screen(self):
         """更新屏幕上的图像并切换到新屏幕"""
