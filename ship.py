@@ -20,8 +20,8 @@ class Ship:
         #对于每艘新飞船，都将其放在屏幕底部的中央
         self.rect.midbottom=self.screen_rect.midbottom
 
-        #通过surface的属性rect来控制飞船的位置
-        #(ai_game.screen, self.image都是surface)
+        #在飞船属性x里存储小数，以解决rect.x只能是整数的问题
+        self.x=float(self.rect.x)
 
         #移动标志
         self.moving_right=False
@@ -29,10 +29,13 @@ class Ship:
 
     def update(self):
         """根据移动标志调整飞船的位置"""
-        if self.moving_right:
-            self.rect.x+=self.setting.ship_speed
-        if self.moving_left:
-            self.rect.x-=self.setting.ship_speed
+        if self.moving_right and self.rect.right<self.screen_rect.right:
+            self.x+=self.setting.ship_speed
+        if self.moving_left and self.rect.left>0:
+            self.x-=self.setting.ship_speed
+        
+        #根据self.x更新rect对象
+        self.rect.x=self.x
 
     def blitme(self):
         """在指定位置绘制飞船"""
