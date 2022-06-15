@@ -33,16 +33,22 @@ class AlienInvasion:
                 pygame.quit()
                 sys.exit()
             elif event.type==pygame.KEYDOWN:
-                #注意一个是type，一个是key
-                if event.key==pygame.K_RIGHT:
-                    self.ship.moving_right=True
-                elif event.key==pygame.K_LEFT:
-                    self.ship.moving_left=True
+                self._check_kedown_events(event)
             elif event.type==pygame.KEYUP:
-                if event.key==pygame.K_RIGHT:
-                    self.ship.moving_right=False
-                elif event.key==pygame.K_LEFT:
-                    self.ship.moving_left=False
+                self._check_keyup_events(event)
+
+    def _check_keydown_events(self,event):
+        #注意前一个函数判断条件是type，这里是key
+        if event.key==pygame.K_RIGHT:
+            self.ship.moving_right=True
+        elif event.key==pygame.K_LEFT:
+            self.ship.moving_left=True
+
+    def _check_keyup_events(self,event):
+        if event.key==pygame.K_RIGHT:
+            self.ship.moving_right=False
+        elif event.key==pygame.K_LEFT:
+            self.ship.moving_left=False
 
     def _upadate_screen(self):
         """更新屏幕上的图像并切换到新屏幕"""
