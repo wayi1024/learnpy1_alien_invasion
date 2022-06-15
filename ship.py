@@ -20,6 +20,14 @@ class Ship:
         #通过surface的属性rect来控制飞船的位置
         #(ai_game.screen, self.image都是surface)
 
+        #移动标志
+        self.moving_right=False
+
+    def update(self):
+        """根据移动标志调整飞船的位置"""
+        if self.moving_right:
+            self.rect.x+=1
+
     def blitme(self):
         """在指定位置绘制飞船"""
         self.screen.blit(self.image,self.rect)
